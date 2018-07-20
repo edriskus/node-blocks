@@ -8,7 +8,17 @@
   <div class="row">
     <div class="col-sm-8">
       <div class="card">
-        <h3 class="thin p-3 mb-0 pb-0">Recent Jobs</h3>
+        <div class="row p-3 pb-0">
+          <div class="col">
+            <h3 class="thin mb-0 pb-0">{{ 'jobs.recent_jobs' | translate }}</h3>
+          </div>
+          <div class="col text-right">
+            <a routerLink="/jobs/create" class="btn btn-outline-info">
+              <i class="fas fa-play"></i>
+              {{ 'jobs.start_new' | translate }}
+            </a>
+          </div>
+        </div>
         <hr class="m-0">
         <ng-container *ngIf="jobs$ | async as jobs; else jobLoading">
           <ng-container *ngIf="jobs?.length > 0; else noJobs">

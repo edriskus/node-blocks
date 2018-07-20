@@ -1,0 +1,29 @@
+<div class="container pt-5">
+  <div class="row d-flex align-items-end pb-4">
+    <div class="col">
+      <h4 class="display-4 mb-0">{{ 'jobs.create' | translate }}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-vertical-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="typeForm" [label]="'Algorithm' | translate">
+          <form [formGroup]="typeForm">
+            <h3 class="thin">Select an algorithm:</h3>
+            <button class="btn btn-outline-info" matStepperNext>{{ 'common.next' | translate }}</button>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="infoForm">
+          <form [formGroup]="infoForm">
+            <h3 class="thin">Fill in the details:</h3>
+            <button class="btn btn-outline-info" matStepperNext>{{ 'common.next' | translate }}</button>
+          </form>
+        </mat-step>
+        <mat-step>
+          <h3 class="thin">{{ 'common.all_good' | translate }}</h3>
+          <button class="btn btn-outline-success">{{ 'common.done' | translate }}</button>
+        </mat-step>
+      </mat-vertical-stepper>
+    </div>
+  </div>
+</div>

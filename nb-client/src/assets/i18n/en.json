@@ -11,7 +11,10 @@
     "footer": "&copy; ErGėBė solutions, <b>2018</b>",
     "no_data": "No data to show",
     "submit": "Submit",
-    "close": "Close"
+    "close": "Close",
+    "next": "Next",
+    "done": "Done",
+    "all_good": "All good!"
   },
 
   "home": {
@@ -50,7 +53,9 @@
     "activity": "Activity"
   },
   "jobs": {
-
+    "start_new": "Start new job",
+    "create": "New job",
+    "recent_jobs": "Recent jobs"
   },
   "auth": {
     "login": "Log in",

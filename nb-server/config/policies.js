@@ -18,15 +18,16 @@ module.exports.policies = {
   ***************************************************************************/
 
   // '*': true,
-
-  // PostController: {
-  //   '*': 'isLoggedIn',
-  //   'find': 'attachUser',
-  //   'findOne': 'attachUser',
-  //   'findBySlug': 'attachUser'
-  // },
-  UserController: {
+  AlgorithmController: {
+    '*': false,
+    'find': 'isLoggedIn',
+    'findOne': 'isLoggedIn',
+  },
+  JobController: {
     '*': 'isLoggedIn'
+  },
+  UserController: {
+    '*': false
   }
 
 };

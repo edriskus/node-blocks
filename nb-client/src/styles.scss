@@ -70,3 +70,47 @@ a.badge-pill {
 .mat-table {
   width: 100%;
 }
+
+
+.btn, .link {
+  cursor: pointer;
+  user-select: none;
+  &:hover {
+    text-decoration: none;
+  }
+  &.loading {
+    position: relative;
+    color: rgba(0,0,0,0) !important;
+    &:hover, &:focus, &:active {
+      color: rgba(0,0,0,0) !important;
+    }
+    @keyframes spinner {
+      to {transform: rotate(360deg);}
+    }
+    &:before {
+      content: '';
+      box-sizing: border-box;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin-top: -10px;
+      margin-left: -10px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-top-color: white;
+      border-bottom-color: white;
+      animation: spinner .8s ease infinite;
+    }
+    &.link {
+      &:before {
+        border-top-color: #ff4081;
+        border-bottom-color: #ff4081;
+      }
+    }
+  }
+  &.cursor-default {
+    cursor: default !important;
+  }
+}
