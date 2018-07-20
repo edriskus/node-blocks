@@ -1,0 +1,65 @@
+<div class="container pt-5">
+  <div class="row">
+    <div class="col">
+      <h4 class="display-4 mb-0">{{ 'common.dashboard' | translate }}</h4>
+      <p class="lead" *ngIf="user$ | async as user">{{ 'dashboard.tagline' | translate:{ username: user?.username} }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <h3 class="thin p-3 mb-0 pb-0">Recent Jobs</h3>
+        <hr class="m-0">
+        <ng-container *ngIf="jobs$ | async as jobs; else jobLoading">
+          <ng-container *ngIf="jobs?.length > 0; else noJobs">
+            <table mat-table [dataSource]="jobs" class="mat-table">
+                <!-- Position Column -->
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let job"> {{ job.id }} </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let job"> {{ job.name }} </td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let job"> {{ job.status }} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="jobColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: jobColumns;"></tr>
+            </table>
+            <mat-paginator #jobPaginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+          </ng-container>
+        </ng-container>
+        <ng-template #noJobs>
+          <div class="p-3 text-center text-muted small">{{ 'common.no_data' | translate }}</div>
+        </ng-template>
+        <ng-template #jobLoading>
+          <div class="d-flex justify-content-center p-3">
+            <mat-spinner [strokeWidth]="1"
+              [diameter]="30"
+              [color]="'accent'"></mat-spinner>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <h3 class="thin p-3 mb-0 pb-0">{{ 'dashboard.activity' | translate }}</h3>
+        <hr class="m-0">
+        <div class="p-3 pt-0">
+          <div class="py-1" *ngFor="let event of activity$ | async">
+            <span>{{ event.title }}</span><br>
+            <small>{{ event.date | date }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

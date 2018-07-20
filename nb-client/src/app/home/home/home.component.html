@@ -1,0 +1,15 @@
+<div class="main-bg bg-pattern"></div>
+<div class="container">
+  <div class="row main-minh d-flex justify-content-center align-items-center pb-3">
+    <div class="col-sm-8 text-center">
+      <h1 class="display-1 text-info"><i class="fas fa-sitemap"></i></h1>
+      <h1 class="display-4">{{ 'home.title' | translate }}</h1>
+      <p class="lead">{{ 'home.tagline' | translate }}</p>
+      <hr class="my-4">
+      <p class="text-left" [innerHTML]="'home.description' | translate | safe:'html'"></p>
+      <p class="lead text-center">
+        <a class="btn btn-outline-info btn-lg" routerLink="/home/features" role="button">{{ 'common.learn_more' | translate }}</a>
+      </p>
+    </div>
+  </div>
+</div>

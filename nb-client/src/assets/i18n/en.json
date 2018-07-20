@@ -1,0 +1,73 @@
+{
+  "common": {
+    "title": "Node::Blocks",
+    "home": "Home",
+    "features": "Features",
+    "pricing": "Pricing",
+    "dashboard": "Dashboard",
+    "jobs": "Jobs",
+    "learn_more": "Learn more",
+    "coming_soon": "Coming soon!",
+    "footer": "&copy; ErGėBė solutions, <b>2018</b>",
+    "no_data": "No data to show",
+    "submit": "Submit",
+    "close": "Close"
+  },
+
+  "home": {
+    "title": "SSMD computing for the Web",
+    "tagline": "a cluster control toolkit for computing on distributed web nodes.",
+    "description": "<b>Node::Blocks</b> utilizes modern Web technologies to harvest the power of a truly <b>distributed</b> Internet that we all live in."
+  },
+  "features": {
+    "description": "Our platform is a friendly, free to use high-performance computing toolkit built for the modern Web.",
+    "modern": {
+      "title": "Modern",
+      "description": "Some of the technologies that we use:<ul><li>HTML5 web workers</li><li>Node.js v9</li></ul>"
+    },
+    "free": {
+      "title": "Free to use",
+      "description": "Node::Blocks is <b>free</b> to use for 1 concurrent job with up to 15 private users (runners)."
+    },
+    "friendly": {
+      "title": "Friendly",
+      "description": "A computing job can literally be started with a single push of a button."
+    }
+  },
+  "pricing": {
+    "description": "Node::Blocks is <b>free</b> to use for 1 concurrent job with up to 15 private users (runners).",
+    "basic": {
+      "title": "Basic",
+      "description": "As a <b>Basic</b> user, you get:<ul><li>1 concurrent job</li><li>Up to 15 private users in a project</li><li>15+ predefined algorithms</li>"
+    },
+    "premium": {
+      "title": "Premium",
+      "description": "As a <b>Premium</b> user, you get:<ul><li>5 concurrent jobs</li><li>Unlimited users in a project</li><li>50+ predefined algorithms</li><li><b>Public</b> jobs</li>"
+    }
+  },
+  "dashboard": {
+    "tagline": "Welcome, {{ username }}!",
+    "activity": "Activity"
+  },
+  "jobs": {
+
+  },
+  "auth": {
+    "login": "Log in",
+    "signup": "Sign up",
+    "sign_me_up": "Sign me up!",
+    "email": "Email address",
+    "enter_email": "Enter your email",
+    "password": "Password",
+    "enter_password": "Enter your password"
+  },
+
+  "err": {
+    "invalid": {
+      "email": "This does not look like an email",
+      "password": "Password must be ..."
+    }
+
+  }
+
+}

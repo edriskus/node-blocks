@@ -1,0 +1,26 @@
+<div class="main-bg bg-info"></div>
+<div class="container pt-5 text-white">
+  <div class="row">
+    <div class="col">
+      <h3 class="text-center display-3 mb-sm-5">{{ 'common.pricing' | translate }}</h3>
+      <p class="lead mb-sm-5 text-center" [innerHTML]="'pricing.description' | translate | safe:'html'"></p>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center text-dark">
+    <div class="col-lg-4 col-md-5 col-sm-6 my-3" *ngFor="let plan of plans">
+      <div class="card p-3" [class.op-fade]="plan.disabled">
+        <div class="card-body">
+          <h1 class="display-1 text-center text-muted"><i [class]="plan.fa"></i></h1>
+          <h3 class="card-title">{{ planTitle(plan) | translate }}</h3>
+          <div class="card-text" [innerHTML]="planDescription(plan) | translate | safe:'html'"></div>
+          <div class="mt-auto text-center" *ngIf="!plan.disabled; else planDisabled">
+            <a href="#" class="btn btn-outline-info">{{ 'auth.signup' | translate }}</a>
+          </div>
+          <ng-template #planDisabled>
+            <a (click)="null" class="btn btn-link disabled">{{ 'common.coming_soon' | translate }}</a>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
