@@ -3,12 +3,13 @@ import {
   HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpHeaders, HttpErrorResponse
 } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../environments/environment';
 import { Store, select } from '@ngrx/store';
-import { AuthState } from './core/reducers/auth.store';
+import { AuthState, LogoutAuthAction } from './core/reducers/auth.store';
 import { NotifyService } from './core/notify.service';
+import { Router } from '@angular/router';
 
 export const EXCLUDED_PATHS = [
   'assets/i18n'
@@ -56,23 +57,32 @@ export class ApiInterceptor implements HttpInterceptor {
 export class ErrorInterceptor implements HttpInterceptor {
 
   constructor(
-    public notifyService: NotifyService
+    public notifyService: NotifyService,
+    public store: Store<any>,
+    public router: Router
   ) {}
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
 
     return next.handle(request).pipe(
       catchError((err, caught) => {
         if (err instanceof HttpErrorResponse) {
-          console.log(err.status, err.error);
-
+          if(err.status == 401) {
+            this.store.dispatch(new LogoutAuthAction());
+            setTimeout(() => this.router.navigate(['/']), 0)
+          }
           if(err.status > 200 && err.status < 400) {
             return caught;
           } else if(err.error && err.error.message) {
-            let snackBarRef = this.notifyService.error(err.error.message);
+            let snackBarRef = this.notifyService.error(err.error.details || err.error.message);
+          } else if(typeof err.error == 'string') {
+            let snackBarRef = this.notifyService.error(err.error);
           }
         }
-        return Observable.throw(err);
+        return throwError(err);
       })
     )
   }

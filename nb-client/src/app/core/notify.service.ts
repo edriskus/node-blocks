@@ -17,8 +17,6 @@ export class NotifyService {
   ) {
     this.translate.get(Object.keys(this.translations)).subscribe(
       res => {
-        console.log(res);
-
         this.translations = res
       }
     )
@@ -27,6 +25,12 @@ export class NotifyService {
   public error(message: string): void {
     this.snackbar.open(message, this.translations['common.close'], {
       panelClass: 'snack-error',
+      duration: 5000
+    })
+  }
+
+  public notify(message: string): void {
+    this.snackbar.open(message, this.translations['common.close'], {
       duration: 5000
     })
   }

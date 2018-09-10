@@ -1,0 +1,48 @@
+<div class="container pt-5">
+  <div class="row d-flex align-items-end pb-4">
+    <div class="col">
+      <h4 class="display-4 mb-0">{{ 'common.algs' | translate }}</h4>
+    </div>
+    <div class="col text-right">
+      <button (click)="createAlg()" class="btn btn-outline-info" [class.loading]="loading">
+        <i class="fas fa-play"></i>
+        {{ 'algs.create_new' | translate }}
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ng-container *ngIf="algs$ | async as algs; else algLoading">
+        <ng-container *ngIf="algs?.data?.length > 0; else noAlgs">
+          <table mat-table [dataSource]="algs" class="mat-table">
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="fa">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let alg" width="50px"><i [class]="alg.fa"></i></td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="title">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let alg"> {{ alg.title }} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="algColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: algColumns;"
+              [routerLink]="'/algorithms/' + row.id"></tr>
+          </table>
+          <mat-paginator #algPaginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </ng-container>
+      </ng-container>
+      <ng-template #noAlgs>
+        <div class="p-3 text-center text-muted small">{{ 'common.no_data' | translate }}</div>
+      </ng-template>
+      <ng-template #algLoading>
+        <div class="d-flex justify-content-center p-3">
+          <mat-spinner [strokeWidth]="1" [diameter]="30" [color]="'accent'"></mat-spinner>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

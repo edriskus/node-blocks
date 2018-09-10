@@ -17,6 +17,8 @@ export const PASS_REGEX = new RegExp(/./);
 })
 export class LoginComponent extends FormController implements OnInit {
 
+  public loading: boolean = false;
+
   constructor(
     protected fb: FormBuilder,
     private authDataService: AuthDataService,
@@ -38,11 +40,13 @@ export class LoginComponent extends FormController implements OnInit {
   public login(): void {
     this.submitAttempted = true;
     if(!this.form.valid) return;
+    this.loading = true;
     this.authDataService.doLogin(
       this.form.value
     ).subscribe(
       res => {
-        this.store.dispatch(new LoginAuthAction(new AuthState(res.user.email, res.user.username, res.token)))
+        this.loading = false;
+        this.store.dispatch(new LoginAuthAction(new AuthState(res.user, res.token)))
         this.router.navigate(['/dashboard'])
         this.dialogRef.close();
       }

@@ -1,0 +1,10 @@
+<form [formGroup]="data.form" *ngIf="data.form">
+  <ngx-codemirror
+    [formControlName]="data.control"
+    [options]="options">
+  </ngx-codemirror>
+  <div class="help-button text-warning" (click)="toggleCodeHelp()">
+    <i class="fas fa-question-circle"></i>
+  </div>
+  <div class="code-help" [innerHTML]="data.codeHelp" *ngIf="codeHelpShown"></div>
+</form>

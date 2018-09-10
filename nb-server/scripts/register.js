@@ -32,7 +32,8 @@ module.exports = {
     await User.create({
       username: inputs.username,
       email: inputs.email,
-      password: inputs.password
+      password: inputs.password,
+      // roles: ['CREATOR']
     });
 
     console.log(await User.find());

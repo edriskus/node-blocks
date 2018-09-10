@@ -3,6 +3,7 @@ import { AuthService } from '../../auth/auth.service';
 import { AuthState } from '../reducers/auth.store';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { userHasRole, userLoggedIn } from '../common.utils';
 
 @Component({
   selector: 'app-header',
@@ -22,6 +23,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  public userLoggedIn = userLoggedIn;
+  public userHasRole = userHasRole;
 
   public login() : void {
     this.authService.login();

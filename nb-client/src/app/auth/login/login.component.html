@@ -10,5 +10,5 @@
     <input formControlName="password" [class.is-invalid]="!isValid('password')" type="password" class="form-control" id="inputPassword" [placeholder]="'auth.enter_password' | translate">
     <div class="invalid-feedback">{{ 'err.invalid.password' | translate }}</div>
   </div>
-  <button type="submit" class="btn btn-outline-info">{{ 'common.submit' | translate }}</button>
+  <button type="submit" [class.loading]="loading" class="btn btn-outline-info">{{ 'common.submit' | translate }}</button>
 </form>

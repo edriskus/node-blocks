@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { AuthState } from '../../core/reducers/auth.store';
 import { map } from 'rxjs/operators';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { DashboardService } from '../dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,19 +18,20 @@ export class DashboardComponent implements OnInit {
   public activity$: Observable<any>;
 
   public jobColumns: Array<string> = [
-    'id', 'name', 'status'
+    'type.fa', 'title'
   ]
 
   @ViewChild('jobPaginator') paginator: MatPaginator;
 
   constructor(
-    private store: Store<any>
+    private store: Store<any>,
+    private dashboardService: DashboardService
   ) {
     this.user$ = this.store.select('auth');
   }
 
   ngOnInit() {
-    this.jobs$ = of([]).pipe(
+    this.jobs$ = this.dashboardService.getJobs().pipe(
       map(data => {
         let ds = new MatTableDataSource<any>(data);
         ds.paginator = this.paginator;
