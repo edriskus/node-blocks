@@ -1,0 +1,23 @@
+form {
+  width: 800px;
+  max-width: 100%;
+  height: 80vh;
+  position: relative;
+  .help-button {
+    position: absolute;
+    top: .5rem;
+    right: .75rem;
+    cursor: pointer;
+    z-index: 5;
+  }
+  .code-help {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, .95);
+    z-index: 4;
+    padding: 1rem;
+  }
+}

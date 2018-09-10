@@ -46,7 +46,7 @@ export class LoginComponent extends FormController implements OnInit {
     ).subscribe(
       res => {
         this.loading = false;
-        this.store.dispatch(new LoginAuthAction(new AuthState(res.user.email, res.user.username, res.token)))
+        this.store.dispatch(new LoginAuthAction(new AuthState(res.user, res.token)))
         this.router.navigate(['/dashboard'])
         this.dialogRef.close();
       }

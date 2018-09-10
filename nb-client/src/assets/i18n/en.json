@@ -6,14 +6,20 @@
     "pricing": "Pricing",
     "dashboard": "Dashboard",
     "jobs": "Jobs",
+    "algs": "Algorithms",
     "learn_more": "Learn more",
     "coming_soon": "Coming soon!",
-    "footer": "&copy; ErGėBė solutions, <b>2018</b>",
+    "footer": "&copy;ergėbė factory, <b>2018</b>",
     "no_data": "No data to show",
     "submit": "Submit",
     "close": "Close",
+    "back": "Back",
+    "cancel": "Cancel",
     "next": "Next",
     "done": "Done",
+    "save": "Save",
+    "remove": "Remove",
+    "save_success": "Saved successfuly!",
     "all_good": "All good!"
   },
 
@@ -52,10 +58,39 @@
     "tagline": "Welcome, {{ username }}!",
     "activity": "Activity"
   },
+  "algs": {
+    "create_new": "Create an algorithm",
+    "algorithm": "Algorithm",
+    "title": "Title",
+    "description": "Description",
+    "inputs": "Inputs",
+    "results": "Results",
+    "worker": "Worker",
+    "fa": "Icon",
+    "enter_title": "Enter title",
+    "enter_description": "Enter description",
+    "enter_inputs": "Enter inputs",
+    "enter_results": "Enter results",
+    "enter_worker": "Enter worker",
+    "enter_fa": "fas fa-box",
+    "block_builder_code": "Block builder",
+    "client_code": "Compute module",
+    "resolve_code": "Finalizer",
+    "backup": "Backup"
+  },
   "jobs": {
+    "job": "Job",
     "start_new": "Start new job",
     "create": "New job",
-    "recent_jobs": "Recent jobs"
+    "recent_jobs": "Recent jobs",
+    "select_algorithm": "Select an algorithm",
+    "configure": "Configure",
+    "description": "Description",
+    "blocks": "Blocks",
+    "running_blocks": "Running",
+    "idle_blocks": "Idle",
+    "finished_blocks": "Finished",
+    "status": "Status"
   },
   "auth": {
     "login": "Log in",
@@ -70,9 +105,20 @@
   "err": {
     "invalid": {
       "email": "This does not look like an email",
-      "password": "Password must be ..."
+      "password": "Password must be ...",
+      "title": "Title is required",
+      "description": "Description is required",
+      "inputs": "Inputs are required",
+      "results": "Results are required",
+      "worker": "Worker is required",
+      "fa": "There is no such FontAwesome icon"
     }
 
+  },
+
+  "help": {
+    "builder_code": "<div style=\"color: #657b83; background-color: #fdf6e3; font-family: 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'; font-weight: normal; font-size: 14px; line-height: 19px; white-space: pre;\">&nbsp;<\/div><p>Code that is used to build blocks. There are 2 global variables: id and job<\/p><p>id: number;<\/p><p>job:{<br\/>&nbsp;&nbsp; title:{type: 'string', required: true},<br\/>&nbsp;&nbsp; type:{model: 'algorithm', required: true},<br\/>&nbsp;&nbsp; description:{type: 'string'},<br\/>&nbsp;&nbsp; inputs:{type: 'json'},<br\/>&nbsp;&nbsp; results:{type: 'json'},<br\/>};<\/p><p>The code <strong>must<\/strong> return a value that is a block for a given id.<\/p>",
+    "client_code": ""
   }
 
 }

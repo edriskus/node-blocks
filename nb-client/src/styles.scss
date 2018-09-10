@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~node_modules/bootstrap/scss/bootstrap';
+@import '~src/variables';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('https://fonts.googleapis.com/css?family=Fredoka+One|Roboto:100,300,400,500,700');
 
-$transition: .25s ease-out;
+@import "~codemirror/lib/codemirror.css";
+@import "~codemirror/theme/material.css";
 
 .thin {
   font-weight: 300;
@@ -71,6 +73,38 @@ a.badge-pill {
   width: 100%;
 }
 
+.mat-step-header {
+  font-family: 'Roboto', sans-serif;
+  background: none !important;
+  &.cdk-program-focused, &:hover {
+    background: none !important;
+  }
+  .mat-step-icon, .mat-step-icon-not-touched {
+    background-color: #17a2b8;
+    color: rgba(0,0,0,0);
+    span {
+      display: none !important;
+    }
+  }
+  .mat-step-icon-not-touched {
+    background-color: rgba(0,0,0,0);
+    border: 1px solid #17a2b8;
+  }
+  .mat-step-header-ripple {
+    display: none;
+  }
+  .mat-step-text-label {
+    font-size: 1.75rem;
+    font-weight: 300 !important;
+    color: $secondary;
+  }
+  .mat-step-label-selected {
+    .mat-step-text-label {
+      font-weight: 300 !important;
+      color: $dark;
+    }
+  }
+}
 
 .btn, .link {
   cursor: pointer;
@@ -112,5 +146,14 @@ a.badge-pill {
   }
   &.cursor-default {
     cursor: default !important;
+  }
+}
+
+.code-edit-panel {
+  .mat-dialog-container {
+    padding: 0;
+    .CodeMirror {
+      height: 100%;
+    }
   }
 }

@@ -24,6 +24,9 @@ module.exports = {
     password: {
       type: 'string',
       required: true
+    },
+    roles: {
+      type: 'json'
     }
   },
   customToJSON: function() {

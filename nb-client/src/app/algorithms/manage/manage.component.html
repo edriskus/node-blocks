@@ -1,0 +1,97 @@
+<div class="container pt-5">
+  <div class="row d-flex align-items-end pb-4">
+    <div class="col">
+      <h4 class="display-4 mb-0"><i [class]="alg?.fa"></i>&nbsp;{{ alg?.title || ('algs.algorithm' | translate) }}</h4>
+    </div>
+  </div>
+  <div class="row" [formGroup]="form">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="inputTitle">{{ 'algs.title' | translate }}</label>
+        <input formControlName="title" [class.is-invalid]="!isValid('title')" type="text"
+          class="form-control" id="inputTitle"
+          [placeholder]="'algs.enter_title' | translate">
+        <div class="invalid-feedback">{{ 'err.invalid.title' | translate }}</div>
+      </div>
+      <div class="form-group">
+        <label for="inputIcon">{{ 'algs.fa' | translate }}</label>
+        <input formControlName="fa" [class.is-invalid]="!isValid('fa')" type="text"
+          class="form-control" id="inputIcon"
+          [placeholder]="'algs.enter_fa' | translate">
+        <div class="invalid-feedback">{{ 'err.invalid.fa' | translate }}</div>
+      </div>
+      <div class="form-group">
+        <label for="inputDescription">{{ 'algs.description' | translate }}</label>
+        <textarea formControlName="description" [class.is-invalid]="!isValid('description')" type="text"
+          class="form-control" id="inputDescription"
+          [placeholder]="'algs.enter_description' | translate"></textarea>
+        <div class="invalid-feedback">{{ 'err.invalid.description' | translate }}</div>
+      </div>
+      <div class="form-group">
+        <label for="inputResults">{{ 'algs.results' | translate }}</label>
+        <textarea formControlName="results" [class.is-invalid]="!isValid('results')" type="text"
+          class="form-control text-monospace" id="inputResults"
+          rows="9"
+          [placeholder]="'algs.enter_results' | translate"></textarea>
+        <div class="invalid-feedback">{{ 'err.invalid.results' | translate }}</div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="inputWorker">{{ 'algs.worker' | translate }}</label>
+        <div class="row">
+          <div class="col-lg-8 mb-2">
+            <button [class.btn-outline-danger]="!isValid('builder_code')"
+              class="btn btn-sm btn-{{ form.get('builder_code').valid ? '' : 'outline-' }}info"
+              (click)="openFormControl('builder_code')">
+              {{ 'algs.block_builder_code' | translate }}</button>
+            <button [class.btn-outline-danger]="!isValid('client_code')"
+              class="btn btn-sm btn-{{ form.get('client_code').valid ? '' : 'outline-' }}warning ml-2"
+              (click)="openFormControl('client_code')">
+              {{ 'algs.client_code' | translate }}</button>
+            <button [class.btn-outline-danger]="!isValid('resolve_code')"
+              class="btn btn-sm btn-{{ form.get('resolve_code').valid ? '' : 'outline-' }}success ml-2"
+              (click)="openFormControl('resolve_code')">
+              {{ 'algs.resolve_code' | translate }}</button>
+          </div>
+          <div class="col-lg-4 text-lg-right">
+            <button class="btn btn-sm btn-outline-success"
+              (click)="backupAlgorithm()">
+              <i class="fas fa-download"></i>
+              {{ 'algs.backup' | translate }}</button>
+            <label class="btn btn-sm btn-outline-warning m-0 ml-2"
+              (change)="uploadAlgorithm($event)"
+              for="algFile">
+              <i class="fas fa-upload"></i></label>
+            <input id="algFile" class="invisible" type="file" (change)="uploadAlgorithm($event)">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputInputs">{{ 'algs.inputs' | translate }}</label>
+        <textarea formControlName="inputs" [class.is-invalid]="!isValid('inputs')" type="text"
+          class="form-control text-monospace" id="inputInputs"
+          rows="18"
+          [placeholder]="'algs.enter_inputs' | translate"></textarea>
+        <div class="invalid-feedback">{{ 'err.invalid.inputs' | translate }}</div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-outline-info" (click)="save(alg)" [class.loading]="loading">
+            {{ 'common.save' | translate }}
+          </button>
+          <a class="link text-muted ml-2" routerLink="/algorithms">
+            {{ 'common.back' | translate }}
+          </a>
+        </div>
+        <div class="col text-right">
+          <a class="link text-danger" (click)="remove(alg)">
+            {{ 'common.remove' | translate }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -19,12 +19,25 @@ module.exports.policies = {
 
   // '*': true,
   AlgorithmController: {
-    '*': false,
+    '*': ['isLoggedIn', 'isCreator'],
     'find': 'isLoggedIn',
     'findOne': 'isLoggedIn',
+    'add': false,
+    'remove': false,
+    'replace': false
+  },
+  BlockController: {
+    '*': false,
+    'dispatchBlock': ['isLoggedIn', 'attachUser'],
+    'yieldBlock': ['isLoggedIn', 'attachUser'],
+    'releaseBlock': ['isLoggedIn', 'attachUser']
   },
   JobController: {
-    '*': 'isLoggedIn'
+    '*': ['isLoggedIn', 'attachUser'],
+    'getRunner': true,
+    'add': false,
+    'remove': false,
+    'replace': false
   },
   UserController: {
     '*': false

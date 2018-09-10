@@ -10,3 +10,11 @@ export function formatPostDate(val: number): string {
 export function generateRandomPlaceholderImage(): string {
   return `/assets/plc${ Math.ceil(Math.random() * 10)}.png`;
 }
+
+export function userLoggedIn(user: any): boolean {
+  return !!(user && user.token);
+}
+
+export function userHasRole(user: any, role: string): boolean {
+  return !!(user && Array.isArray(user.roles) && user.roles.find(r => r == role));
+}

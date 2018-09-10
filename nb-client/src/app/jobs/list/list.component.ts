@@ -16,7 +16,7 @@ export class ListComponent implements OnInit {
   public activity$: Observable<any>;
 
   public jobColumns: Array<string> = [
-    'id', 'name', 'status'
+    'type.fa', 'title', 'type.title', 'status'
   ]
 
   @ViewChild('jobPaginator') paginator: MatPaginator;
@@ -34,5 +34,6 @@ export class ListComponent implements OnInit {
         return ds;
       })
     )
+  }
 
 }

@@ -7,21 +7,58 @@
   <div class="row">
     <div class="col">
       <mat-vertical-stepper [linear]="true" #stepper>
-        <mat-step [stepControl]="typeForm" [label]="'Algorithm' | translate">
+        <mat-step [editable]="editable" [stepControl]="typeForm" [label]="selectedTypeName || ('jobs.select_algorithm' | translate)">
           <form [formGroup]="typeForm">
-            <h3 class="thin">Select an algorithm:</h3>
-            <button class="btn btn-outline-info" matStepperNext>{{ 'common.next' | translate }}</button>
+            <jobs-algorithms formControlName="type" [algorithms]="algorithms"></jobs-algorithms>
+            <div class="pt-2" *ngIf="typeForm.valid">
+              <button class="btn btn-outline-info"
+                matStepperNext>
+                {{ 'common.next' | translate }}
+              </button>
+            </div>
           </form>
         </mat-step>
-        <mat-step [stepControl]="infoForm">
-          <form [formGroup]="infoForm">
-            <h3 class="thin">Fill in the details:</h3>
-            <button class="btn btn-outline-info" matStepperNext>{{ 'common.next' | translate }}</button>
-          </form>
+        <mat-step [editable]="editable" [stepControl]="form" [label]="jobTitle || ('jobs.configure' | translate)">
+          <div class="row" [formGroup]="form">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="inputTitle">{{ 'job.title' | translate }}</label>
+                <input formControlName="title" [class.is-invalid]="!isValid('title')" type="text"
+                  class="form-control" id="inputTitle"
+                  [placeholder]="'job.enter_title' | translate">
+                <div class="invalid-feedback">{{ 'err.invalid.title' | translate }}</div>
+              </div>
+              <div class="form-group">
+                <label for="inputDescription">{{ 'job.description' | translate }}</label>
+                <textarea formControlName="description" [class.is-invalid]="!isValid('description')" type="text"
+                  class="form-control" id="inputDescription"
+                  [placeholder]="'job.enter_description' | translate"></textarea>
+                <div class="invalid-feedback">{{ 'err.invalid.description' | translate }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label>{{ 'job.inputs' | translate }}</label>
+              <div class="form-group" *ngFor="let input of selectedTypeInputs">
+                <input [(ngModel)]="jobInputs[input.key]" [ngModelOptions]="{standalone: true}"
+                  [placeholder]="input.key" [type]="inputType(input)" class="form-control">
+              </div>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-outline-info" (click)="submit(stepper)"
+                matStepperNext [class.loading]="loading">
+                {{ 'common.next' | translate }}
+              </button>
+            </div>
+          </div>
         </mat-step>
-        <mat-step>
-          <h3 class="thin">{{ 'common.all_good' | translate }}</h3>
-          <button class="btn btn-outline-success">{{ 'common.done' | translate }}</button>
+        <mat-step [label]="'common.all_good' | translate">
+          <div class="row">
+            <div class="col col-md-6">
+              <h1 class="display-1 text-success op-fade"><i class="fas fa-check-circle"></i></h1>
+              <p class="lead">{{ 'jobs.job_created_description' | translate }}</p>
+              <button class="btn btn-outline-success" (click)="goToJob()">{{ 'common.done' | translate }}</button>
+            </div>
+          </div>
         </mat-step>
       </mat-vertical-stepper>
     </div>

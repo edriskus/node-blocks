@@ -1,3 +1,14 @@
-<p>
-  run works!
-</p>
+<div class="wrap">
+  <div><b>{{ 'jobs.status' | translate }}: </b>{{ statusText }}</div>
+  <div class="text-center py-3">
+    <a (click)="start()" class="link p-2 display-5 text-success" [class.text-light]="status == 'RUNNING'">
+      <i class="fas fa-play"></i> Start
+    </a>
+    <a (click)="pause()" class="link p-2 display-5 text-warning" [class.text-light]="status != 'RUNNING'">
+      <i class="fas fa-pause"></i>
+    </a>
+    <a (click)="stop()" class="link p-2 display-5 text-danger">
+      <i class="fas fa-stop"></i> Halt
+    </a>
+  </div>
+</div>

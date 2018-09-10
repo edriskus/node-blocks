@@ -6,11 +6,20 @@ export const LOGOUT = 'LOGOUT';
 const initialState = 0;
 
 export class AuthState {
+  public id: string;
+  public email: string;
+  public username: string;
+  public roles?: Array<string>;
+
   constructor(
-    public email?: string,
-    public username?: string,
+    public user: any = {},
     public token?: string
-  ) {}
+  ) {
+    this.id = user.id;
+    this.email = user.email;
+    this.username = user.username;
+    this.roles = user.roles || [];
+  }
 }
 
 export function authReducer(state: AuthState = new AuthState(), action: AuthActions) {

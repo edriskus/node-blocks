@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   public activity$: Observable<any>;
 
   public jobColumns: Array<string> = [
-    'id', 'name', 'status'
+    'type.fa', 'title'
   ]
 
   @ViewChild('jobPaginator') paginator: MatPaginator;
