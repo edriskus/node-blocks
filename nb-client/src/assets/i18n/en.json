@@ -76,7 +76,8 @@
     "block_builder_code": "Block builder",
     "client_code": "Compute module",
     "resolve_code": "Finalizer",
-    "backup": "Backup"
+    "backup": "Backup",
+    "uses_gpu": "Use GPU (experimental)"
   },
   "jobs": {
     "job": "Job",

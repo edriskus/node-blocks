@@ -14,7 +14,7 @@ interface IErrorProps extends WithStyles<typeof errorStyle> {
 }
 
 class Error extends React.Component<IErrorProps, any> {
-  public render() {
+  render() {
     const { t } = this.props;
     return (
       <div>

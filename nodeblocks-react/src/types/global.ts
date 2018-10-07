@@ -1,7 +1,10 @@
 import { RouterState } from 'connected-react-router';
 import { History } from 'history';
 import { Store } from 'redux';
-import { IUserReduxState } from './user';
+import { Persistor } from 'redux-persist';
+import { ApiReduxState } from './api';
+import { IJob } from './job';
+import { UserReduxState } from './user';
 
 declare global {
   // tslint:disable:interface-name
@@ -30,9 +33,12 @@ export interface IConfig {
 export interface IStoreConfig {
   history: History;
   store: Store<any>;
+  persistor: Persistor;
 }
 
 export interface IAppReduxState {
   router: RouterState;
-  userState: IUserReduxState;
+  user: UserReduxState;
+  jobs: ApiReduxState<IJob[]>;
+  job: ApiReduxState<IJob>;
 }

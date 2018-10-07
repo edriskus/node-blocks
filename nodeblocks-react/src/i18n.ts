@@ -7,6 +7,8 @@ i18n.use(LanguageDetector).init({
       translations: {
         "common": {
           "title": "Node::Blocks",
+          "title1": "Node",
+          "title2": "Blocks",
           "home": "Home",
           "features": "Features",
           "pricing": "Pricing",
@@ -25,6 +27,8 @@ i18n.use(LanguageDetector).init({
           "done": "Done",
           "save": "Save",
           "remove": "Remove",
+          "yes": "Yes",
+          "no": "No",
           "save_success": "Saved successfuly!",
           "all_good": "All good!",
           "page_not_found": "The page you've been looking for does not exist."
@@ -96,11 +100,20 @@ i18n.use(LanguageDetector).init({
           "running_blocks": "Running",
           "idle_blocks": "Idle",
           "finished_blocks": "Finished",
-          "status": "Status"
+          "status": "Status",
+          "use_gpu": "Use GPU",
+          "algorithm": "Algorithm",
+          "gpu": "GPU",
+        },
+        "engine": {
+          "idle": "Idle",
+          "paused": "Paused",
+          "running": "Running"
         },
         "auth": {
           "enter": "Enter",
           "join": "Join",
+          "logout": "Log out",
           "sign_me_up": "Sign me up!",
           "email": "Email address",
           "enter_email": "Enter your email",

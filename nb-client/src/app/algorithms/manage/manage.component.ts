@@ -60,6 +60,7 @@ export class ManageComponent extends FormController implements OnInit {
     this.form = this.fb.group({
       title: [null, [Validators.required]],
       fa: [null, [Validators.required]],
+      gpu: [null, [Validators.required]],
       description: [null, []],
       inputs: [null, []],
       results: [null, []],

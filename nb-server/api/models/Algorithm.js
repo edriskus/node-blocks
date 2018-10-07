@@ -9,6 +9,7 @@ module.exports = {
 
   attributes: {
     title: { type: 'string', required: true },
+    gpu: { type: 'boolean', required: true },
     fa: { type: 'string', required: true },
     description: { type: 'string' },
     inputs: { type: 'json' },

@@ -1,7 +1,13 @@
-export interface IUserReduxState {
-  isOnSync: boolean;
-  loggedIn: boolean;
-  details: any | null;
-  token: string | null;
-  username: string | null;
+import { IApiError } from "./api";
+
+export class UserReduxState {
+  user?: {
+    email: string;
+    username: string;
+    id: string;
+    roles?: string[];
+  };
+  loading?: boolean;
+  apiError?: IApiError
+  token?: string;
 }

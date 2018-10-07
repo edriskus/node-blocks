@@ -18,9 +18,16 @@ module.exports = {
       owner: req.user.id
     });
     if(!job) return res.notFound();
+    let type = await Algorithm.findOne({ id: job.type });
     let blocks = await Block.find({ job: job.id });
     return res.ok({
       ...job,
+      type: {
+        id: job.type,
+        title: type.title,
+        gpu: type.gpu,
+        fa: type.fa
+      },
       blocks: blocks.length,
       running_blocks: blocks.filter(b => b.status == 'RUNNING').length,
       idle_blocks: blocks.filter(b => b.status == 'IDLE').length,

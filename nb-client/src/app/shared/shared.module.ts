@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { SafePipe } from './safe.pipe';
-import { MatTableModule, MatPaginatorModule, MatProgressSpinnerModule, MatProgressBarModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatProgressSpinnerModule, MatProgressBarModule, MatSlideToggleModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { CodeEditComponent } from './code-edit/code-edit.component';
 
@@ -22,6 +22,7 @@ import 'codemirror/mode/javascript/javascript';
     MatTableModule,
     MatProgressBarModule,
     MatPaginatorModule,
+    MatSlideToggleModule,
     MatProgressSpinnerModule,
     TranslateModule
   ],
@@ -38,6 +39,7 @@ import 'codemirror/mode/javascript/javascript';
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSlideToggleModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
     TranslateModule,

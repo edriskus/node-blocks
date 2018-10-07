@@ -68,10 +68,13 @@
         </div>
       </div>
       <div class="form-group">
+        <mat-slide-toggle formControlName="gpu">{{ 'algs.uses_gpu' | translate }}</mat-slide-toggle>
+      </div>
+      <div class="form-group">
         <label for="inputInputs">{{ 'algs.inputs' | translate }}</label>
         <textarea formControlName="inputs" [class.is-invalid]="!isValid('inputs')" type="text"
           class="form-control text-monospace" id="inputInputs"
-          rows="18"
+          rows="15"
           [placeholder]="'algs.enter_inputs' | translate"></textarea>
         <div class="invalid-feedback">{{ 'err.invalid.inputs' | translate }}</div>
       </div>

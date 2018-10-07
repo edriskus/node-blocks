@@ -1,21 +1,41 @@
-import { IUserReduxState } from '../../types/user';
+import { IApiError } from '../../types/api';
+import { UserReduxState } from '../../types/user';
 
-const INITIAL_STATE: IUserReduxState = {
-  isOnSync: false,
-  loggedIn: false,
+export enum UserActionTypes {
+  'API/LOGIN/LOADING' = 'API/LOGIN/LOADING',
+  'API/LOGIN/SUCCESS' = 'API/LOGIN/SUCCESS',
+  'API/LOGIN/ERROR' = 'API/LOGIN/ERROR',
+  'API/LOGIN/RESET' = 'API/LOGIN/RESET'
+}
 
-  details: {},
-  token: null,
-  username: null,
+interface IUserAction {
+  type: UserActionTypes;
+  data?: UserReduxState; 
+  error?: IApiError;
 };
 
-type UserAction = any;
-
 export const userReducer = (
-  state: IUserReduxState = INITIAL_STATE,
-  action: UserAction,
-) => {
+  state: UserReduxState = new UserReduxState(),
+  action: IUserAction,
+): UserReduxState => {
   switch (action.type) {
+    case 'API/LOGIN/LOADING':
+      return {
+        ...state,
+        loading: true
+      }
+    case 'API/LOGIN/SUCCESS': 
+      return {
+        ...action.data
+      }
+    case 'API/LOGIN/ERROR':
+      return {
+        apiError: {
+          ...(action.error as IApiError)
+        }
+      }
+    case 'API/LOGIN/RESET':
+      return new UserReduxState();
     default:
       return state;
   }

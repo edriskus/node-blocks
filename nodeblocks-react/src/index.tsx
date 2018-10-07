@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { I18nextProvider } from "react-i18next";
+import { PersistGate } from 'redux-persist/integration/react'
 
 import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
@@ -17,9 +18,11 @@ const appState: IStoreConfig = configStore();
 const Application: JSX.Element = (
   <I18nextProvider i18n={i18n}>
     <Provider store={appState.store}>
-      <ConnectedRouter history={appState.history}>
-        <App />
-      </ConnectedRouter>
+      <PersistGate loading={null} persistor={appState.persistor}>
+        <ConnectedRouter history={appState.history}>
+          <App />
+        </ConnectedRouter>
+      </PersistGate>
     </Provider>
   </I18nextProvider>  
 );

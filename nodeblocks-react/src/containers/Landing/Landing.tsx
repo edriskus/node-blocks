@@ -5,17 +5,19 @@ import {
   WithStyles
 } from '@material-ui/core';
 import * as React from 'react';
-import { translate } from 'react-i18next';
+import { InjectedTranslateProps, translate } from 'react-i18next';
 import { compose } from 'redux';
 
 import { landingStyle } from './landing.tss';
 
-interface ILandingProps extends WithStyles<typeof landingStyle> {
-  t: any;
-}
+type ILandingStyleProps = WithStyles<typeof landingStyle>;
 
-class Landing extends React.Component<ILandingProps, any> {
-  public render() {
+export type ILandingProps =
+  InjectedTranslateProps &
+  ILandingStyleProps;
+
+class Landing extends React.Component<ILandingProps, {}> {
+  render() {
     const { classes, t } = this.props;
     return (
       <div className={classes.wrap}>
